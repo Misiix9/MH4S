@@ -1,0 +1,59 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Build output
+build/
+dist/
+out/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Personal configuration backups
+*-backup/
+*.old
+*.orig
+
+# Environment files
+.env
+.env.*
+
+# Cache
+.cache/
+__pycache__/
+*.py[cod]
+
+# Binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package files
+*.tar
+*.gz
+*.zip
+*.rar
+
+# Local configuration that shouldn't be shared
+local.conf
+custom.conf

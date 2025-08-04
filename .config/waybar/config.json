@@ -1,0 +1,143 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    "height": 30,
+    "spacing": 4,
+    
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/monitoring",
+        "custom/spotify"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "backlight",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        "battery",
+        "custom/notification"
+    ],
+    
+    "custom/monitoring": {
+        "exec": "~/.config/hypr/scripts/system-monitor.sh",
+        "return-type": "json",
+        "interval": 2,
+        "format": "{}",
+        "on-click": "kitty -e htop",
+        "on-click-right": "~/.config/hypr/scripts/system-menu.sh",
+        "tooltip": true
+    },
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    
+    "custom/spotify": {
+        "exec": "~/.config/hypr/scripts/spotify-widget.sh",
+        "return-type": "json",
+        "interval": 1,
+        "format": "{}",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous",
+        "tooltip": true
+    },
+    
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%Y-%m-%d %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffffff'>{}</span>",
+                "days": "<span color='#ffffff'>{}</span>",
+                "weekdays": "<span color='#ffffff'>{}</span>",
+                "today": "<span color='#ffffff'><b>{}</b></span>"
+            }
+        }
+    },
+    
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""],
+        "on-click-right": "~/.config/hypr/scripts/system-menu.sh"
+    },
+    
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}",
+        "format-linked": " {ifname}",
+        "format-disconnected": "睊",
+        "format-disabled": "睊",
+        "format-alt": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "on-click": "~/.config/hypr/scripts/network-manager.sh menu",
+        "on-click-right": "~/.config/hypr/scripts/network-manager.sh connect"
+    },
+    
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "~/.config/hypr/scripts/bluetooth-manager.sh menu",
+        "on-click-right": "~/.config/hypr/scripts/bluetooth-manager.sh connect"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "婢",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "~/.config/hypr/scripts/audio-manager.sh menu",
+        "on-click-right": "~/.config/hypr/scripts/audio-manager.sh output-menu",
+        "on-click-middle": "~/.config/hypr/scripts/audio-manager.sh mute",
+        "scroll-step": 5
+    },
+    
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+    
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": " <span foreground='red'><sup></sup></span>",
+            "none": " ",
+            "dnd-notification": " <span foreground='red'><sup></sup></span>",
+            "dnd-none": " "
+        },
+        "return-type": "json",
+        "exec": "~/.config/hypr/scripts/notification-status.sh",
+        "on-click": "~/.config/hypr/scripts/toggle-dnd.sh",
+        "restart-interval": 1
+    }
+}

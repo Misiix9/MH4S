@@ -1,0 +1,66 @@
+# Appearance
+font=Lexend 11
+width=350
+height=100
+margin=10
+padding=15
+border-size=2
+border-radius=15
+default-timeout=5000
+
+# Colors
+background-color=#000000CC
+text-color=#FFFFFF
+border-color=#FFFFFF88
+
+# Position
+anchor=top-right
+layer=overlay
+
+# Behavior
+icon-path=/usr/share/icons/Papirus-Dark
+max-icon-size=48
+icons=1
+
+# History
+max-history=50
+history=1
+
+# Sound
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+
+# Urgency specific styles
+[urgency=low]
+border-color=#FFFFFF44
+default-timeout=3000
+
+[urgency=normal]
+border-color=#FFFFFF88
+default-timeout=5000
+
+[urgency=high]
+border-color=#FFFFFFCC
+text-color=#FFFFFF
+default-timeout=0
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+
+# Application specific styles
+[app-name="Spotify"]
+default-timeout=3000
+group-by=category
+
+[app-name="Volume"]
+default-timeout=1000
+
+[category=network]
+default-timeout=3000
+
+[category=email]
+default-timeout=10000
+
+[category=im]
+default-timeout=7000
+
+# Dismiss on button
+[mode=do-not-disturb]
+invisible=1

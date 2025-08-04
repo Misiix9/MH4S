@@ -1,0 +1,189 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Lexend", "Font Awesome 6 Free";
+    font-size: 13px;
+    min-height: 0;
+    transition: all 0.3s ease;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    margin: 5px 5px 0 5px;
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#custom-spotify,
+#custom-weather,
+#custom-notification {
+    padding: 0 10px;
+    border-radius: 10px;
+    background: transparent;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Module-specific styling */
+#clock {
+    font-weight: bold;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe6f;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff5555;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Hover effects */
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#bluetooth:hover,
+#custom-spotify:hover,
+#custom-weather:hover,
+#custom-notification:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Text reveal animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        margin-right: -20px;
+    }
+    to {
+        opacity: 1;
+        margin-right: 0;
+    }
+}
+
+#battery label,
+#network label,
+#pulseaudio label,
+#backlight label,
+#bluetooth label {
+    display: none;
+}
+
+#battery:hover label,
+#network:hover label,
+#pulseaudio:hover label,
+#backlight:hover label,
+#bluetooth:hover label {
+    display: inline;
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes blink {
+    from {
+        color: #ff5555;
+    }
+    to {
+        background: rgba(0, 0, 0, 0.8);
+        color: #000000;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Custom module styling */
+#custom-spotify {
+    color: #1DB954;
+    animation: pulse 2s ease infinite;
+}
+
+#custom-notification.notification,
+#custom-notification.dnd-notification {
+    color: #ff5555;
+    animation: pulse 1s ease infinite;
+}
+
+/* System monitoring */
+#custom-monitoring {
+    font-family: "Lexend Mono", monospace;
+    margin: 0 5px;
+}
+
+#custom-monitoring .bar {
+    margin: 0 2px;
+}
+
+#custom-monitoring.critical {
+    color: #ff5555;
+    animation: pulse 1s ease infinite;
+}
+
+#custom-monitoring.warning {
+    color: #ffbe6f;
+}
+
+#custom-monitoring:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Improved hover effects */
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#bluetooth:hover,
+#custom-spotify:hover,
+#custom-weather:hover,
+#custom-notification:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,99 @@
+:root {
+    --font-family: "Lexend";
+    --border-radius: 20px;
+}
+
+* {
+    font-family: var(--font-family) !important;
+}
+
+/* Main container styling */
+.Root__main-view,
+.Root__nav-bar,
+.Root__now-playing-bar {
+    background-color: black !important;
+}
+
+/* Buttons and controls */
+button {
+    border-radius: var(--border-radius) !important;
+}
+
+.main-playButton-PlayButton {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Cards and elements */
+.main-card-card {
+    border-radius: var(--border-radius) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transition: background-color 0.3s ease;
+}
+
+.main-card-card:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Progress bar */
+.progress-bar {
+    --progress-bar-height: 3px;
+    --fg-color: white;
+    --bg-color: rgba(255, 255, 255, 0.1);
+}
+
+.playback-bar__progress-time {
+    color: white !important;
+}
+
+/* Volume slider */
+.volume-bar .progress-bar {
+    --progress-bar-height: 6px;
+}
+
+/* Playlist styling */
+.main-rootlist-rootlist {
+    margin-top: 24px;
+}
+
+.main-rootlist-rootlistItem {
+    padding: 0 8px;
+}
+
+/* Now playing view */
+.main-nowPlayingView-content {
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+/* Album art */
+.cover-art-image {
+    border-radius: var(--border-radius) !important;
+}
+
+/* Search input */
+.search-input {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+/* Context menu */
+.main-contextMenu-menu {
+    border-radius: var(--border-radius) !important;
+    background-color: black !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
