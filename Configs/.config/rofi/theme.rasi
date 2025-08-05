@@ -1,0 +1,13 @@
+* {
+    /* MH4S Black and White Theme */
+    main-bg:            rgba(0, 0, 0, 0.8); /* Black background with transparency */
+    main-fg:            rgba(255, 255, 255, 1); /* White foreground */
+    main-br:            rgba(255, 255, 255, 1); /* White border */
+    select-bg:          rgba(255, 255, 255, 0.2); /* Semi-transparent white selection */
+    select-fg:          rgba(255, 255, 255, 1); /* White selection text */
+    separatorcolor:     rgba(255, 255, 255, 0.3); /* Semi-transparent white separator */
+    border-color:       rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+    
+    /* Font configuration */
+    font:               "Lexend 12";
+}

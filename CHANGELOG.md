@@ -1,167 +1,41 @@
 # Changelog
 
-All notable changes to MH4S will be documented in this file.
+All notable changes to `HyDE` will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to _Modified_ [CalVer](https://calver.org/). See [Versioning](https://github.com/HyDE-Project/HyDE/blob/master/RELEASE_POLICY.md#versioning-yymq) For more info
 
-## [1.0.0] - 2025-08-04
+## v25.7.3
+
+We use a dedicated Python environment to keep HyDE clean and dependency-free. Just run your scripts with `hyde-shell`—it handles the environment for you.
+
+Examples:  
+ `hyde-shell mediaplayer.py`  
+ `hyde-shell waybar`
 
 ### Added
-- Initial release of MH4S
-- Modular installer system
-  - Base system installation
-  - Theme configuration
-  - User preferences
-  - Optional applications
-  - Post-installation setup
-- Hyprland configuration
-  - Master-stack layout
-  - Rounded corners and blur
-  - Custom animations
-  - Dynamic workspaces
-- Waybar setup
-  - Minimal black theme
-  - Hover animations
-  - System indicators
-  - Custom modules
-- Terminal configuration (Kitty)
-  - Custom styling
-  - Lexend font
-  - Transparency effects
-- Rofi menus
-  - Application launcher
-  - System controls
-  - Network manager
-  - Bluetooth manager
-  - Audio controls
-- System utilities
-  - Screenshot tool
-  - Clipboard manager
-  - Wallpaper manager
-  - System menu
-- Theme integration
-  - GTK theme
-  - Qt styling
-  - SDDM theme
-  - Font configuration
-- Documentation
-  - Installation guide
-  - Troubleshooting guide
-  - Contributing guidelines
-  - Code style guide
 
-### Key Features
-- Consistent black & white theme
-- Smooth animations and transitions
-- Integrated system controls
-- Comprehensive keybindings
-- User-friendly installer
-- Extensive documentation
+- CHANGELOG.md to track notable changes
+- Features and fixes for mediaplayer. #865
+- HyDE's python environment rebuild on installation
+- PyGObject for the python environment
+- Mediaplayer: Add support for generic MPRIS metadata
+- Mediaplayer: RIght click menu for mediaplayer
+- Mediaplayer: Scroll up/down to seek
+- Waybar: Added a POC implementation of drawers in group modules
+- Waybar: Made mpris comparable to custom/mediaplayer. Should be noted mpris is not very customizable.
+- Waybar: Added generic gamemode module which detects if games are running in feral mode
+- Waybar: 'hyde-shell waybar --select' now will ask for **layout and style** options.
 
-## [Unreleased]
+### Removed
 
-### Planned
-- Additional themes
-- More window layouts
-- Custom widgets
-- Performance optimizations
-- Additional language support
-- Enhanced documentation
+- Waybar: Remove test layouts.
 
-### Under Consideration
-- Alternative menu styles
-- Additional wallpaper effects
-- Custom workspace layouts
-- Plugin system
-- Theme generator
-- Backup/restore system
+### Changed
 
-## Version History
+- Launch Scripts using 'hyde-shell' instead of '$scrPath/'
 
-### Beta Testing
-- Initial concept and design
-- Core functionality testing
-- User feedback integration
-- Performance optimization
-- Documentation preparation
+### Fixed
 
-### Alpha Development
-- Basic configuration setup
-- Script development
-- Theme creation
-- Initial testing
-- Documentation drafting
-
-## Versioning Strategy
-
-MH4S uses semantic versioning:
-- MAJOR version for incompatible API changes
-- MINOR version for backwards-compatible features
-- PATCH version for backwards-compatible fixes
-
-## Update Guide
-
-### From Beta to 1.0.0
-1. Backup existing configuration
-2. Remove old installation
-3. Clone new repository
-4. Run installer
-5. Restore personal settings
-
-### Future Updates
-1. Check changelog for breaking changes
-2. Backup configuration
-3. Update repository
-4. Run installer with --update flag
-5. Review new features
-
-## Compatibility Notes
-
-### Version 1.0.0
-- Requires Arch Linux or derivatives
-- Hyprland 0.35.0 or higher
-- Waybar with custom module support
-- PipeWire audio system
-- systemd init system
-
-### Tested Environments
-- Arch Linux
-- Endeavour OS
-- Manjaro
-- Various hardware configurations
-  - NVIDIA GPUs
-  - AMD GPUs
-  - Intel Graphics
-  - Multi-monitor setups
-
-## Migration Notes
-
-### From Other WMs
-- i3/Sway: Similar keybindings
-- GNOME: Different paradigm
-- KDE: Some familiar concepts
-- BSPWM: Different window management
-
-### Configuration Transfer
-- Keybindings need adaptation
-- Theme settings may need adjustment
-- Application configs mostly compatible
-- Scripts may need path updates
-
-## Feedback and Support
-
-Please report:
-- Bugs and issues
-- Feature requests
-- Documentation improvements
-- Compatibility problems
-
-## Acknowledgments
-
-Thanks to:
-- Hyprland developers
-- Waybar contributors
-- Theme designers
-- Beta testers
-- Community contributors
+- Waybar: Avoid multi user process conflict
+- Mediaplayer: crash when player is not playing.
+- Waybar: QOL fixes.

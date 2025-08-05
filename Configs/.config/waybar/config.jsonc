@@ -1,0 +1,95 @@
+{
+  "layer": "top",
+  "output": ["*"],
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/modules/*json*", // This can be used on waybar-git
+    "$XDG_DATA_HOME/waybar/modules/*json*" // This can be used on waybar-git
+    // "$XDG_CONFIG_HOME/waybar/includes/includes.json" // This will be deprecated if waybar 0.12.0 is released on debian
+  ],
+  // ? Groups per side
+  "modules-left": ["group/left"],
+  "modules-center": ["group/center"],
+  "modules-right": ["group/right"],
+  
+  // Left group: Workspaces and active window name
+  "group/left": {
+    "orientation": "inherit",
+    "modules": ["hyprland/workspaces", "hyprland/window"]
+  },
+  
+  // Center group: Time/date (24h format)
+  "group/center": {
+    "orientation": "inherit",
+    "modules": ["clock"]
+  },
+  
+  // Right group: Network, Bluetooth, Volume, Performance, Power button
+  "group/right": {
+    "orientation": "inherit",
+    "modules": [
+      "network",
+      "bluetooth",
+      "pulseaudio",
+      "cpu",
+      "memory",
+      "custom/power"
+    ]
+  },
+  
+  // Clock configuration
+  "clock": {
+    "format": "{:%Y.%m.%d %H:%M}",
+    "format-alt": "{:%A, %B %d, %Y  %H:%M:%S}",
+    "tooltip": true,
+    "tooltip-format": "{:%Y.%m.%d %H:%M:%S}",
+    "on-click": "mode"
+  },
+  
+  // Network configuration
+  "network": {
+    "format-wifi": "󰖩 {essid}",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-disconnected": "󰖪 Disconnected",
+    "tooltip": true
+  },
+  
+  // Bluetooth configuration
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-connected": "󰂯 {num_connections} connected",
+    "format-disabled": "󰂲 Disabled",
+    "interval": 30,
+    "tooltip": true
+  },
+  
+  // Audio configuration
+  "pulseaudio": {
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰖁 Muted",
+    "on-click": "pavucontrol"
+  },
+  
+  // CPU configuration
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": true
+  },
+  
+  // Memory configuration
+  "memory": {
+    "format": "󰍛 {used_mem}G/{total_mem}G"
+  },
+  
+  // Custom power button
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "pkill -x rofi || $scrPath/logoutlaunch.sh",
+    "tooltip": true,
+    "tooltip-format": "Power Menu"
+  }
+}

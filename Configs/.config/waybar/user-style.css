@@ -1,0 +1,77 @@
+/* MH4S User Custom Styles */
+
+/* Font configuration */
+* {
+    font-family: "Lexend";
+    font-size: 12px;
+}
+
+/* Bar styling */
+#waybar {
+    background-color: transparent;
+    color: var(--main-fg);
+    border-radius: 0;
+    /* Enable blur/transparency */
+    background: var(--bar-bg);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    height: 20px;
+}
+
+/* Workspace styling */
+#workspaces button {
+    padding: 0 5px;
+    border-radius: 10px;
+    margin: 2px;
+    color: var(--main-fg);
+    background-color: transparent;
+    border: 2px solid var(--main-fg);
+    min-width: 20px;
+}
+
+#workspaces button.active {
+    color: var(--wb-act-fg);
+    background-color: var(--wb-act-bg);
+    border: 2px solid var(--wb-act-bg);
+}
+
+#workspaces button:hover {
+    color: var(--wb-hvr-fg);
+    background-color: var(--wb-hvr-bg);
+    border: 2px solid var(--wb-hvr-bg);
+}
+
+/* Window styling */
+#window {
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 2px;
+    color: var(--main-fg);
+}
+
+/* Clock styling */
+#clock {
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 2px;
+    color: var(--main-fg);
+}
+
+/* Right modules styling */
+#network, #bluetooth, #pulseaudio, #cpu, #memory, #custom-power {
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 2px;
+    color: var(--main-fg);
+}
+
+/* Separator styling */
+#workspaces button:not(:last-child),
+#window:not(:last-child),
+#clock:not(:last-child),
+#network:not(:last-child),
+#bluetooth:not(:last-child),
+#pulseaudio:not(:last-child),
+#cpu:not(:last-child),
+#memory:not(:last-child) {
+    margin-right: 5px;
+}

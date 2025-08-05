@@ -1,0 +1,9 @@
+:root {
+    --bar-bg: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+    --main-bg: #000000; /* Black background */
+    --main-fg: #ffffff; /* White foreground */
+    --wb-act-bg: #ffffff; /* White active background */
+    --wb-act-fg: #000000; /* Black active foreground */
+    --wb-hvr-bg: #ffffff; /* White hover background */
+    --wb-hvr-fg: #000000; /* Black hover foreground */
+}
