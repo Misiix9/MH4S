@@ -33,17 +33,37 @@ check_command() {
 
 # Function to backup existing configuration
 backup_config() {
-    if [ -d "$INSTALL_DIR" ]; then
-        print_msg "$YELLOW" "Backing up existing Hyprland configuration..."
-        mkdir -p "$BACKUP_DIR"
-        cp -r "$INSTALL_DIR" "$BACKUP_DIR"
-        if [ $? -eq 0 ]; then
-            print_msg "$GREEN" "Backup created at: $BACKUP_DIR"
-        else
-            print_msg "$RED" "Failed to create backup. Aborting installation."
-            exit 1
+    local configs=(
+        "$HOME/.config/hypr"
+        "$HOME/.config/rofi"
+        "$HOME/.config/waybar"
+        "$HOME/.config/kitty"
+        "$HOME/.config/mako"
+    )
+
+    print_msg "$YELLOW" "Backing up existing configurations..."
+    mkdir -p "$BACKUP_DIR"
+
+    for config in "${configs[@]}"; do
+        if [ -d "$config" ]; then
+            # Get the base directory name
+            local dirname=$(basename "$config")
+            
+            # Create backup
+            cp -r "$config" "$BACKUP_DIR/$dirname"
+            if [ $? -eq 0 ]; then
+                print_msg "$GREEN" "Backed up $dirname to: $BACKUP_DIR/$dirname"
+                # Remove original after successful backup
+                rm -rf "$config"
+                print_msg "$YELLOW" "Removed original $dirname configuration"
+            else
+                print_msg "$RED" "Failed to backup $dirname. Aborting installation."
+                exit 1
+            fi
         fi
-    fi
+    done
+    
+    print_msg "$GREEN" "All configurations backed up successfully!"
 }
 
 # Function to install required packages
@@ -77,7 +97,7 @@ install_packages() {
         pavucontrol
         blueman
         cpupower
-        sensors
+        lm_sensors
     )
     
     # Install packages
@@ -111,6 +131,7 @@ install_aur_packages() {
     
     local aur_packages=(
         spicetify-cli
+        rofi-calc
     )
     
     # Install AUR packages
@@ -143,6 +164,33 @@ install_config() {
     chmod +x "$INSTALL_DIR/scripts/"*.sh
     
     print_msg "$GREEN" "Configuration files installed successfully!"
+}
+
+# Function to configure rofi
+configure_rofi() {
+    print_msg "$BLUE" "Configuring Rofi..."
+    
+    # Create rofi config directory
+    mkdir -p "$HOME/.config/rofi"
+    
+    # Create rofi config
+    cat > "$HOME/.config/rofi/config.rasi" << 'EOL'
+configuration {
+    modi: "drun,run,calc,window";
+    icon-theme: "Papirus-Dark";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    sort: true;
+    sorting-method: "normal";
+}
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+EOL
+    
+    print_msg "$GREEN" "Rofi configured successfully!"
 }
 
 # Function to configure services
@@ -206,6 +254,7 @@ main() {
     install_packages
     install_aur_packages
     install_config
+    configure_rofi
     configure_services
     apply_system_config
     configure_theme
